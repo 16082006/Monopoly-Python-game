@@ -62,10 +62,28 @@ Running the Game
 4. Run the game's Tkinter entry-point script from the project directory. Ensure the resources folder remains in place so board data and images can load.
 The exact launch command depends on how the repository is arranged; verify the entry-point file before adding a one-line command here.
 
-What I Worked On
-My main development work focused on the custom jail penalties and escape attempts, Free Parking bonus, Go To Jail and passing-Go behavior, player naming, double rent for complete color groups, player-to-player trading, and interface updates. I implemented these as extensions to an existing university lab Monopoly codebase.
+## My Contributions and Implementation
 
-This project helped me practice object-oriented programming, event-driven interfaces, validation of game actions, and coordinating changes across multiple Python modules.
+I developed the Monopoly game using Python and Tkinter in PyCharm, focusing on implementing interactive gameplay, custom rules, property management, and player interactions.
+
+### Key Features Implemented
+
+- Jail System: Implemented jail penalties, including a $50 entry fine, three attempts to roll doubles to escape, and an additional penalty if unsuccessful.
+- Free Parking: Added a custom rule that awards players $100 when they land on Free Parking.
+- Player Movement: Implemented movement rules, including collecting $200 when passing Go and moving directly to jail when landing on Go To Jail.
+- Player Customization: Added the ability for players to enter their names before starting the game.
+- Property Management: Implemented property ownership tracking, rent calculations, and double rent when a player owns a complete color group.
+- Trading System: Developed a system allowing players to exchange properties and money, with validation and confirmation before completing transactions.
+- Graphical User Interface: Used Tkinter to support player interactions, display game information, and update the interface as gameplay progresses.
+
+# Technical Skills Applied
+
+- Python Programming
+- Object-Oriented Programming (OOP)
+- Graphical User Interface Development with Tkinter
+- Event-Driven Programming
+- Game Logic and Rule Implementation
+- Debugging and Testing using PyCharm
 
 Developer: Anshul Kothiya
 Project: University Computer Science coursework
