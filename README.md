@@ -66,7 +66,6 @@ What I Worked On
 My main development work focused on the custom jail penalties and escape attempts, Free Parking bonus, Go To Jail and passing-Go behavior, player naming, double rent for complete color groups, player-to-player trading, and interface updates. I implemented these as extensions to an existing university lab Monopoly codebase.
 
 This project helped me practice object-oriented programming, event-driven interfaces, validation of game actions, and coordinating changes across multiple Python modules.
-Screenshots
-Add screenshots of the actual game board, player setup, and trading window here.
+
 Developer: Anshul Kothiya
 Project: University Computer Science coursework
