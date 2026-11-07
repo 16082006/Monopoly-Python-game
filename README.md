@@ -1,89 +1,137 @@
-Monopoly Board Game — Python & Tkinter
-A desktop Monopoly-style board game developed in Python with a Tkinter graphical interface. I developed this game using PyCharm, implementing custom gameplay rules, player customization, and a property-trading system.
+# Monopoly Board Game — Python & Tkinter
 
-The goal is to manage money and properties, collect rent, make trades, and outlast other players. Alongside familiar Monopoly mechanics, this version has several custom rules that change how players move around the board and manage their money.
-Features
-- Multiplayer turns: Players roll dice, move around the board, and interact with properties and special spaces.
-- Custom player names: Enter names when starting the game; they appear in the interface.
-- Property ownership and rent: Buy properties and collect rent from opponents.
-- Color-group bonus: Owning a complete color group can double rent on unimproved properties.
-- Player trading: Exchange eligible properties, cash, or both with another active player.
-- Custom jail system: Players pay an initial fine and can attempt to escape by rolling doubles.
-- Free Parking reward: Landing on Free Parking awards cash.
-- Live interface updates: Player position, money, and jail status update as the game progresses.
-How to Play
-1. Start the Python application and enter names for the players.
-2. Take turns rolling the dice to move around the board.
-3. Purchase available properties when permitted by the game.
-4. Pay rent when you land on a property owned by another player.
-5. Build up color groups to increase rent on eligible properties.
-6. Use the trading interface to propose exchanges of properties and/or money.
-7. Manage your cash carefully to avoid bankruptcy.
-Rules in This Version
-Passing Go
-- Passing Go during normal movement awards $200.
+A desktop Monopoly-style board game developed in Python with a Tkinter graphical interface. I worked on the game in PyCharm, implementing interactive multiplayer gameplay, property transactions, player customization, and custom rules for jail, Free Parking, and rent.
+
+The goal is to build wealth by buying properties, collecting rent, and making strategic trades while avoiding bankruptcy.
+
+## Features
+
+- Three-player game: Players take turns rolling two dice, moving around a 40-space board, and managing their money.
+- Custom player names: Each player enters a name when the game starts (1–20 characters).
+- Property management: Purchase available properties, collect rent, and mortgage or unmortgage owned properties.
+- Property trading: Propose cash-and-property exchanges with another player.
+- Custom rules: Jail fines, a Free Parking cash reward, and a double-rent bonus for complete color groups.
+- Interactive desktop interface: Tkinter displays the board, player information, game messages, and trade controls.
+
+## How to Play
+
+1. Launch the application. Enter a name for each of the three players when prompted.
+2. Take turns rolling the dice and moving around the board.
+3. Buy available properties when you have sufficient funds.
+4. Pay rent when you land on another player's eligible property.
+5. Collect properties of the same color to qualify for the rent bonus.
+6. Use the trading interface to offer money, eligible properties, or both.
+7. Manage your balance and properties to stay in the game.
+
+## Rules in This Version
+
+
+### Starting Money and Passing Go
+
+- Each player starts with $1,500.
+- Passing Go through normal movement awards $200.
 - Being sent directly to jail does not award $200 for passing Go.
-Jail
-- A player sent to jail immediately pays $50.
-- The player has up to three chances to roll doubles to escape.
-- If the player rolls doubles, no additional fine is charged; the initial $50 still applies.
-- If all three attempts fail, the player pays another $50 to leave jail, for a total of $100 in fines.
-- Landing on Go To Jail moves the player directly to jail and applies these rules.
-Free Parking
-- Landing on Free Parking immediately adds $100 to the player's balance.
-Rent and Property Groups
-- When a player owns every property in a color group, rent is doubled on eligible properties without houses or hotels.
-- Mortgaged properties do not receive this bonus.
-- Utilities and railroads follow their own rent calculations rather than this color-group bonus.
-Trading
-- Active players can trade cash, unmortgaged properties, or a combination of both.
-- A player must own any property they offer and have enough cash for the proposed payment.
-- Mortgaged properties cannot be traded through this system.
-- The interface provides player/property selectors, money controls, and a confirmation dialog.
-- Once confirmed, a valid trade transfers ownership and funds immediately; trades are final.
-Built With
-- Python — game logic and application code
-- Tkinter — desktop graphical user interface
-- CSV — board/property data
-- PyCharm — development and debugging environment
-Project Structure
+
+### Jail
+
+- Going to jail triggers an initial $50 fine.
+- A jailed player can attempt to roll doubles on up to three turns.
+- Rolling doubles releases the player without an additional fine; the initial $50 remains paid.
+- After three unsuccessful attempts, the game charges an additional $50, for $100 total.
+- Landing on Go To Jail sends the player to jail.
+- Rolling doubles three times in a turn also triggers the game's jail-handling logic.
+
+### Free Parking
+
+- Landing on Free Parking awards $100 immediately.
+
+### Property Ownership and Rent
+
+- Unowned purchasable properties can be bought.
+- Landing on an eligible property owned by another player triggers rent.
+- Owning an entire color group gives a double-rent bonus on eligible unimproved properties.
+- Mortgaged properties do not collect rent.
+- Utilities and railroads use their own rent calculations rather than the color-group bonus.
+- Mortgaging a property provides half its purchase price; unmortgaging requires that amount plus a 10% fee.
+
+### Trading
+
+- Players can propose exchanges involving cash, properties, or both.
+- The game checks that a player owns each offered property and that the property is not mortgaged.
+- The game also checks that each side has enough money for its proposed payment.
+- When a valid trade is processed, the game transfers the agreed money and property ownership.
+
+## Built With
+
+| Technology | Purpose |
+|---|---|
+| Python | Game logic, players, turns, and transactions |
+| Tkinter / ttk | Desktop GUI, player-name prompts, and trade controls |
+| CSV | Board and property data |
+| PyCharm | Development and debugging |
+
+
+The code also uses an observer/event-notification pattern to communicate game updates to the interface.
+
+## Project Structure
+
+```text
 monopoly1920/
-├── controller.py       # Turns, dice rolls, jail, and trade coordination
-├── player.py           # Player state, movement, and transfers
-├── gameboard.py        # Board and property-group logic
-├── gamesquare.py       # Square behavior and rent rules
-├── view.py             # Tkinter interface
-├── observer.py         # Interface update notifications
-└── resources/          # Board data and image assets
-Running the Game
-1. Install Python 3 on your computer.
-2. Download or clone this repository.
-3. Open the project in PyCharm (or another Python IDE).
-4. Run the game's Tkinter entry-point script from the project directory. Ensure the resources folder remains in place so board data and images can load.
-The exact launch command depends on how the repository is arranged; verify the entry-point file before adding a one-line command here.
+├── view.py                 # Tkinter GUI and application entry point
+├── controller.py           # Game flow, dice, turns, and trade coordination
+├── player.py               # Player state, movement, money, and trades
+├── gameboard.py            # Board setup and property-group logic
+├── gamesquare.py           # Property details, mortgages, and rent
+├── observer.py             # Event notifications
+├── Gamelogger.py           # Game logging utility
+├── resources/
+│   ├── data/
+│   │   └── board.csv       # Board data
+│   └── images/             # Board and property images
+└── text_docs/              # Additional project documentation
+```
 
-## My Contributions and Implementation
+## Running the Game
 
-I developed the Monopoly game using Python and Tkinter in PyCharm, focusing on implementing interactive gameplay, custom rules, property management, and player interactions.
 
-### Key Features Implemented
+### Requirements
 
-- Jail System: Implemented jail penalties, including a $50 entry fine, three attempts to roll doubles to escape, and an additional penalty if unsuccessful.
-- Free Parking: Added a custom rule that awards players $100 when they land on Free Parking.
-- Player Movement: Implemented movement rules, including collecting $200 when passing Go and moving directly to jail when landing on Go To Jail.
-- Player Customization: Added the ability for players to enter their names before starting the game.
-- Property Management: Implemented property ownership tracking, rent calculations, and double rent when a player owns a complete color group.
-- Trading System: Developed a system allowing players to exchange properties and money, with validation and confirmation before completing transactions.
-- Graphical User Interface: Used Tkinter to support player interactions, display game information, and update the interface as gameplay progresses.
+- Python 3 with Tkinter support
+- A desktop environment capable of displaying Tkinter windows
+Tkinter is normally included with many Python installations; if import tkinter fails, install or enable Tkinter for your Python distribution.
 
-# Technical Skills Applied
+### Steps
 
-- Python Programming
-- Object-Oriented Programming (OOP)
-- Graphical User Interface Development with Tkinter
-- Event-Driven Programming
-- Game Logic and Rule Implementation
-- Debugging and Testing using PyCharm
+1. Download or clone this repository.
+2. Open a terminal and navigate to the monopoly1920 folder (the folder containing view.py and resources).
+3. Run:
 
-Developer: Anshul Kothiya
-Project: University Computer Science coursework
+   ```bash
+   python view.py
+   ```
+
+   On systems where Python 3 is invoked as `python3`, use `python3 view.py` instead.
+4. Enter the three player names in the prompts to begin.
+PyCharm: Open the project and run view.py. Set the run configuration's working directory to monopoly1920 so the game can find resources/data/board.csv and the board images.
+
+## Screenshots
+
+Screenshots of the running game can be added here to demonstrate the board, player setup, and trading interface.
+<!-- After adding real screenshots to a screenshots/ folder, uncomment and update these paths:
+![Game board](screenshots/game-board.png)
+![Player setup](screenshots/player-setup.png)
+![Trading interface](screenshots/trading.png)
+-->
+
+## Technical Highlights
+
+Working on this project involved:
+- Implementing rule-based game logic for movement, fines, rent, and property transactions.
+- Managing player state, cash balances, ownership, and jail status.
+- Building interactive Tkinter dialogs and controls.
+- Validating proposed trades before transferring money and properties.
+- Organizing game functionality across separate Python modules.
+- Connecting game events to GUI updates through observer-style notifications.
+**Developer:** Anshul Kothiya  
+**Project context:** Computer Science coursework  
+**Development environment:** PyCharm
