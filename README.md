@@ -114,14 +114,6 @@ Tkinter is normally included with many Python installations; if import tkinter f
 4. Enter the three player names in the prompts to begin.
 PyCharm: Open the project and run view.py. Set the run configuration's working directory to monopoly1920 so the game can find resources/data/board.csv and the board images.
 
-## Screenshots
-
-Screenshots of the running game can be added here to demonstrate the board, player setup, and trading interface.
-<!-- After adding real screenshots to a screenshots/ folder, uncomment and update these paths:
-![Game board](screenshots/game-board.png)
-![Player setup](screenshots/player-setup.png)
-![Trading interface](screenshots/trading.png)
--->
 
 ## Technical Highlights
 
